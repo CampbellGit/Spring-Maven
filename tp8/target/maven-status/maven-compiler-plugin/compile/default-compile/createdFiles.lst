@@ -1,0 +1,6 @@
+com\m2i\formation\entity\Company.class
+com\m2i\formation\dao\EmployeeDAO.class
+com\m2i\formation\service\EmployeeService.class
+com\m2i\formation\presentation\TestMain.class
+com\m2i\formation\entity\Employee.class
+com\m2i\formation\dao\IEmployeeDAO.class

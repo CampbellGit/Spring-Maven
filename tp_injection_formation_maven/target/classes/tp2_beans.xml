@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="scrumTeam" class="com.m2i.formation.ScrumTeam">
+		<property name="developper" ref="developper" />
+		<property name="scrumMaster" ref="scrumMaster" />
+		<property name="productOwner" ref="productOwner" />
+	</bean>
+
+	<bean id="scrumMaster" class="com.m2i.formation.TeamMember">
+		<property name="name" value="Michel Le Pilote" />
+		<property name="xpYears" value="10" />
+		<property name="role" value="scrum master" />
+	</bean>
+
+	<bean id="productOwner" class="com.m2i.formation.TeamMember">
+		<property name="name" value="Jacqueline Biscotte" />
+		<property name="xpYears" value="1" />
+		<property name="role" value="product owner" />
+	</bean>
+
+	<bean id="developper" class="com.m2i.formation.TeamMember">
+		<property name="name" value="Raoul Doudoune" />
+		<property name="xpYears" value="6" />
+		<property name="role" value="developper" />
+	</bean>
+
+
+
+</beans>
