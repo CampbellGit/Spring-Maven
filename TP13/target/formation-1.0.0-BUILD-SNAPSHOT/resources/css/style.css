@@ -1,0 +1,23 @@
+@CHARSET "ISO-8859-1";
+body{
+    font: normal 8pt verdana, helvetica, sans-serif;
+    width: 700px;
+}
+
+
+table, menu, form{
+	border: 1px solid #0568CD;
+	padding: 10px;
+	margin: 10px;
+	width: 700px;
+
+}
+
+label {
+
+	display: block;
+	width: 150px;
+	float: left;
+
+
+}

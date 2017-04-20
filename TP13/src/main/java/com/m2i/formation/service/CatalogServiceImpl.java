@@ -2,6 +2,8 @@ package com.m2i.formation.service;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.m2i.formation.dao.ICatalogDAO;
@@ -10,21 +12,22 @@ import com.m2i.formation.dao.entity.Product;
 @Service("catalogService")
 public class CatalogServiceImpl implements ICatalogService {
 	
+	@Resource
 	ICatalogDAO catalogDAO;
 	
-	
 
-	public ICatalogDAO getCatalogDAO() {
-		return catalogDAO;
-	}
-
-	public void setCatalogDAO(ICatalogDAO catalogDAO) {
-		this.catalogDAO = catalogDAO;
-	}
 
 	@Override
 	public Product findProductByRef(String ref) {
-		return catalogDAO.findProductByRef(ref);
+		Product p = new Product();
+		try {
+			p = catalogDAO.findProductByRef(ref);
+		} catch (Exception e) {
+			System.out.println("Erreur " + e);
+		}
+
+		
+		return p;
 			
 	}
 

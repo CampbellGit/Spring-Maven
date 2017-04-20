@@ -5,7 +5,7 @@ body{
 }
 
 
-table, menu, form{
+#listProducts, form{
 	border: 1px solid #0568CD;
 	padding: 10px;
 	margin: 10px;

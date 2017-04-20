@@ -24,11 +24,11 @@ public class CatalogController {
 		return "products";
 	}
 	@RequestMapping(value="/saveProduct")
-	public String save(Product product, Model model){
-		if (product.getId() == 0){
-			catalogService.addProduct(product);
+	public String save(Product p, Model model){
+		if (p.getId() == 0){
+			catalogService.addProduct(p);
 		}
-		else catalogService.updateProduct(product);
+		else catalogService.updateProduct(p);
 		model.addAttribute("product", new Product());
 		model.addAttribute("products", catalogService.findAllProducts());
 		return "products";		
@@ -48,7 +48,7 @@ public class CatalogController {
 	public String edit(String ref, Model model){
 		Product p = new Product();
 		p.setRef(ref);
-		catalogService.findProductByRef(ref);
+		p = catalogService.findProductByRef(p.getRef());
 		model.addAttribute("product", p);
 		model.addAttribute("products", catalogService.findAllProducts());
 		return "products";
