@@ -1,7 +1,8 @@
 package com.m2i.formation;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
+
+import java.util.Date;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -62,7 +63,8 @@ public class TestCatalogDAOImpl {
 
 	@Test
 	public void testFindProductByCriteria() {
-		assertNotNull(catalogDAO.findProductByCriteria("Test"));
+		Product test = new Product();
+		assertNotSame(test, catalogDAO.findProductByCriteria("Truc"));
 	}
 
 	@Test
