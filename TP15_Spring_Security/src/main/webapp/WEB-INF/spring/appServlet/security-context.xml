@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+<!-- <http auto-config="true"> -->
+<!-- <intercept-url pattern="/admin/*" access="ROLE_ADMIN" /> -->
+<!-- </http> -->
+
+<http auto-config="true" use-expressions="true">
+<intercept-url pattern="/admin/*" access="hasAnyRole('ROLE_ADMIN', 'ROLE_MODERATOR') and hasIpAddress('0:0:0:0:0:0:0:1')" />
+</http>
+
+
+<beans:import resource="servlet-context.xml"/>
+<beans:import resource="../root-context.xml"/>
+<authentication-manager>
+	<authentication-provider>
+	<password-encoder ref="encoder"/>
+	<jdbc-user-service data-source-ref="datasource"
+	 users-by-username-query="select username, password, enabled from users where username = ?"
+	 authorities-by-username-query="select u.username, r.role_name from users u, roles r where u.id_user = r.id_user and u.username =?"/>
+	
+<!-- 		<user-service> -->
+<!-- 			<user name="admin" password="$2a$12$tb7/1qgod2HHsJhNmVwWqelL1l.nHuYtdVYpkjFAQSVnJ/J6hKAme" authorities="ROLE_ADMIN" /> -->
+<!-- 		</user-service> -->
+	
+	</authentication-provider>
+
+
+</authentication-manager>
+
+</beans:beans>
